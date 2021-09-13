@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS lesson 11</title>
+  <link rel="stylesheet" href="css/bootstrap5.min.css">
+</head>
+<body>
+
+
+  <!-- Title, fulltitle, movie_year, Categories, summary, ImageURL, imdb_id, imdb_rating, runtime, language, ytid -->
+  <script src="js/movies.js"></script>
+  <script>
+    /* let phone = 'Redmi';
+    {
+      let phone = 'Samsung';
+      console.log(phone);
+    }
+    console.log(phone);
+
+    const car = 'Audi';
+    // car = 'Mers';
+
+    const moshin = {
+      name: 'Audi',
+      year: 2010
+    };
+    moshin.year = 2015;
+
+    console.log(moshin.year);
+
+    let birnima = 'minnarsa';
+    birnima = 'boshqa';
+
+    var sayName = function () {
+      var greeting = 'Assalomu alaykum';
+      console.log(greeting);
+    };
+    sayName();
+    console.log(greeting); */
+
+    // const, o'zgartirish kerak bo'lsa, let
+
+    // forEach
+    /* for (let i = 0; i < 10; i++) {
+      console.log(movies[i].Title);
+    }
+
+    movies.slice(0, 10).forEach(function (movie) {
+      console.log(movie.Title);
+    });
+
+    movies.slice(0, 10).forEach((movie) => {
+      console.log(movie.Title);
+    });
+
+    movies.slice(0, 10).forEach(movie => {
+      console.log(movie.Title);
+    }); */
+
+
+
+    // filter
+    const cartoons = [];
+    for (let i = 0; i < movies.length; i++) {
+      if (movies[i].Categories.includes('Animation')) {
+        cartoons.push(movies[i]);
+      }
+    }
+
+    /*
+    const animations = movies.filter(function (movie) {
+      return movie.Categories.includes('Animation');
+    });
+
+    const animations = movies.filter((movie) => {
+      return movie.Categories.includes('Animation');
+    });
+
+    const animations = movies.filter(movie => {
+      return movie.Categories.includes('Animation');
+    });
+    */
+
+    const animations = movies.filter(movie => movie.Categories.includes('Animation'));
+
+    /*
+    const filteredMovies = movies.filter(function (movie) {
+      return movie.Categories.includes('Thriller') && movie.movie_year >= 2008 && movie.imdb_rating >= 6;
+    });
+    */
+    const filteredMovies = movies.filter(movie => movie.Categories.includes('Thriller') && movie.movie_year >= 2008 && movie.imdb_rating >= 6);
+
+    const filteredMovie = movies.find(movie => movie.Categories.includes('Thriller') && movie.movie_year >= 2008 && movie.imdb_rating >= 6);
+    // Thriller, >=2008, rating>=6
+
+
+    const okalar = ['Ali', 'Vali', 'Bahodir'];
+    /* for (let i = 0; i < okalar.length; i++) {
+      okalar[i] = okalar[i] + ' oka';
+    } */
+
+    const okaxonlar = okalar.map(bratan => bratan + ' oka');
+
+
+    /* const marks = [40, 20, 30, 2, 18, 87];
+    const updatedMarks = marks.map(mark => {
+      if (mark < 90) {
+        return mark + 10;
+      }
+    }); */
+
+    const normalizedMovies = movies.map(movie => {
+      return {
+        title: movie.Title.toString(),
+        year: movie.movie_year,
+        categories: movie.Categories.split('|'),
+        summary: movie.summary,
+        imdbId: movie.imdb_id,
+        imdbRating: movie.imdb_rating,
+        runtime: movie.runtime,
+        language: movie.language,
+        youtubeId: movie.ytid,
+        youtubePosterMax: `http://i3.ytimg.com/vi/${movie.ytid}/maxresdefault.jpg`,
+        youtubePoster: `http://i3.ytimg.com/vi/${movie.ytid}/hqdefault.jpg`,
+        imdbPage: `https://www.imdb.com/title/${movie.imdb_id}`
+      };
+    });
+
+  </script>
+</body>
+</html>
